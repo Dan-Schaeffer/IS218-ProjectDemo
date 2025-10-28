@@ -1,0 +1,89 @@
+[MASTER]
+# Use multiple processes to speed up Pylint
+jobs=1
+
+# Python code to execute, usually for sys.path manipulation
+init-hook='import sys; sys.path.append(".")'
+
+# Files or directories to exclude
+ignore=CVS,venv,.venv,htmlcov,.pytest_cache,__pycache__,references
+
+# Pickle collected data for later comparisons
+persistent=yes
+
+[MESSAGES CONTROL]
+# Disable specific warnings that are too strict for learning projects
+disable=
+    C0111,  # missing-docstring (we want students to focus on code first)
+    R0903,  # too-few-public-methods (data classes are fine)
+    R0913,  # too-many-arguments (sometimes necessary)
+    C0103,  # invalid-name (allow short variable names in tests)
+    W0212,  # protected-access (needed for testing)
+    R0801,  # duplicate-code (some duplication in tests is ok)
+    C0303,  # trailing-whitespace (minor formatting issue)
+    W1203,  # logging-fstring-interpolation (f-strings are more readable for students)
+    W0707,  # raise-missing-from (can be confusing for beginners)
+    C0415,  # import-outside-toplevel (sometimes useful for demos)
+    W0718,  # broad-exception-caught (ok for top-level error handling)
+    W0611,  # unused-import (may be needed for type hints)
+    C0411,  # wrong-import-order (not critical for learning)
+    W0621,  # redefined-outer-name (common in pytest fixtures)
+    R0917,  # too-many-positional-arguments (dataclass usage)
+    W0613,  # unused-argument (pytest fixtures may be unused)
+    W1514,  # unspecified-encoding (utf-8 is default in modern Python)
+
+[REPORTS]
+# Set to yes to get detailed reports
+reports=yes
+score=yes
+
+[BASIC]
+# Good variable names
+good-names=i,j,k,ex,_,id,key
+
+# Bad variable names
+bad-names=foo,bar,baz,toto,tutu,tata
+
+# Regular expression for constant names
+const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__))$
+
+[FORMAT]
+# Maximum line length
+max-line-length=100
+
+# Maximum number of lines in a module
+max-module-lines=1000
+
+# String for indentation
+indent-string='    '
+
+[DESIGN]
+# Maximum number of arguments for function/method
+max-args=7
+
+# Maximum number of locals for function/method body
+max-locals=15
+
+# Maximum number of return/yield for function/method body
+max-returns=6
+
+# Maximum number of branch for function/method body
+max-branches=12
+
+# Maximum number of statements in function/method body
+max-statements=50
+
+# Maximum number of attributes for a class
+max-attributes=10
+
+[IMPORTS]
+# Deprecated modules
+deprecated-modules=optparse,tkinter.tix
+
+[CLASSES]
+# List of method names used to declare instance attributes
+defining-attr-methods=__init__,__new__,setUp
+
+[EXCEPTIONS]
+# Exceptions that will emit a warning when caught
+overgeneral-exceptions=builtins.Exception
