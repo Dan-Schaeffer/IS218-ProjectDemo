@@ -1,0 +1,51 @@
+/* Basic theme */
+body {
+  background: #f5f6f8;
+}
+
+/* Card appearance */
+.card {
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Code output box */
+pre.output {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+/* Forms */
+.form-label {
+  font-weight: 600;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  color: #0d6efd;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+.btn-success {
+  background-color: #198754;
+  border-color: #198754;
+}
+.btn-success:hover {
+  background-color: #157347;
+}
+
+/* Spacing utilities */
+.vstack.gap-3 > * + * {
+  margin-top: 1rem;
+}

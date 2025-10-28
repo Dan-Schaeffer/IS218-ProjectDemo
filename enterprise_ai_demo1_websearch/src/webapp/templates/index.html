@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="card p-4">
+  <h2 class="h4 mb-3">Explain Code</h2>
+  <form method="post" action="{{ url_for('do_explain') }}" enctype="multipart/form-data" class="vstack gap-3">
+
+    <div>
+      <label class="form-label">Paste code</label>
+      <textarea class="form-control" name="code" rows="8" placeholder="Paste code here...">{{ pasted_code or "" }}</textarea>
+    </div>
+
+    <div>
+      <label class="form-label">Or upload file</label>
+      <input class="form-control" type="file" name="file"
+             accept=".py,.js,.ts,.java,.c,.cpp,.cs,.go,.rb,.rs,.php,.txt">
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Language hint</label>
+        <input class="form-control" type="text" name="language" value="{{ language or '' }}" placeholder="python, js, csharp...">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Extra context</label>
+        <input class="form-control" type="text" name="context" placeholder="e.g. for a CLI tool">
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Explainer model</label>
+        <input class="form-control" type="text" name="explain_model" placeholder="(default from client)">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Max tokens</label>
+        <input class="form-control" type="number" name="explain_max_tokens" value="8000" min="256" max="8000">
+      </div>
+    </div>
+
+    <div>
+      <button class="btn btn-success" type="submit">Submit</button>
+    </div>
+  </form>
+
+  {% if explain_result %}
+    <hr class="my-4">
+    <h3 class="h5">Explanation</h3>
+
+    {% if explain_result.detected_language %}
+      <p><strong>Detected language:</strong> {{ explain_result.detected_language }}</p>
+    {% endif %}
+
+    <h4 class="h6">Summary</h4>
+    <p>{{ explain_result.summary }}</p>
+
+    <h4 class="h6">How it works</h4>
+    {% if explain_result.steps %}
+      <ol class="ps-3">
+        {% for s in explain_result.steps %}
+          <li>{{ s }}</li>
+        {% endfor %}
+      </ol>
+    {% else %}
+      <p class="text-muted fst-italic">(no steps)</p>
+    {% endif %}
+
+    <h4 class="h6">Errors</h4>
+    {% if explain_result.errors %}
+      <ul class="ps-3">
+        {% for p in explain_result.errors %}
+          <li>{{ p }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-muted fst-italic">(none)</p>
+    {% endif %}
+  {% endif %}
+</section>
+
+{% endblock %}
