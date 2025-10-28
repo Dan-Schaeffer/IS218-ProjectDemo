@@ -1,0 +1,112 @@
+{
+  "valid_search_response": {
+    "id": "resp_test123",
+    "object": "response",
+    "created": 1728576000,
+    "model": "gpt-4o-mini",
+    "output": [
+      {
+        "type": "web_search_call",
+        "id": "ws_67c9fa0502748190b7dd390736892e100be649c1a5ff9609",
+        "status": "completed",
+        "action": {
+          "type": "search",
+          "query": "latest technology news",
+          "domains": null,
+          "sources": [
+            {
+              "url": "https://techcrunch.com/2025/10/10/ai-breakthrough",
+              "type": "web"
+            },
+            {
+              "url": "https://theverge.com/2025/10/10/innovation",
+              "type": "web"
+            }
+          ]
+        }
+      },
+      {
+        "id": "msg_67c9fa077e288190af08fdffda2e34f20be649c1a5ff9609",
+        "type": "message",
+        "status": "completed",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Recent technology news highlights several exciting developments. A major AI breakthrough was announced today, revolutionizing natural language processing[1]. Additionally, quantum computing reached a new milestone with improved error correction[2].",
+            "annotations": [
+              {
+                "type": "url_citation",
+                "start_index": 95,
+                "end_index": 150,
+                "url": "https://techcrunch.com/2025/10/10/ai-breakthrough",
+                "title": "Major AI Breakthrough Announced - TechCrunch"
+              },
+              {
+                "type": "url_citation",
+                "start_index": 200,
+                "end_index": 250,
+                "url": "https://theverge.com/2025/10/10/innovation",
+                "title": "Quantum Computing Milestone - The Verge"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "usage": {
+      "input_tokens": 50,
+      "output_tokens": 150
+    }
+  },
+  "empty_response": {
+    "id": "resp_empty",
+    "object": "response",
+    "created": 1728576000,
+    "model": "gpt-4o-mini",
+    "output": [],
+    "usage": {
+      "input_tokens": 10,
+      "output_tokens": 0
+    }
+  },
+  "no_citations_response": {
+    "id": "resp_nocite",
+    "object": "response",
+    "created": 1728576000,
+    "model": "gpt-4o-mini",
+    "output": [
+      {
+        "id": "msg_nocite",
+        "type": "message",
+        "status": "completed",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "I couldn't find any recent information on that topic.",
+            "annotations": []
+          }
+        ]
+      }
+    ],
+    "usage": {
+      "input_tokens": 20,
+      "output_tokens": 15
+    }
+  },
+  "api_error_401": {
+    "error": {
+      "message": "Invalid API key provided",
+      "type": "invalid_request_error",
+      "code": "invalid_api_key"
+    }
+  },
+  "api_error_429": {
+    "error": {
+      "message": "Rate limit exceeded",
+      "type": "rate_limit_error",
+      "code": "rate_limit_exceeded"
+    }
+  }
+}
